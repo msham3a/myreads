@@ -1,6 +1,6 @@
 import BookShelfChanger from "./BookShelfChanger";
 
-function Book({ books }) {
+function Book({ books , refresh }) {
   return books.map((book) => (
     <li key={book.id}>
       <div className="book">
@@ -10,13 +10,14 @@ function Book({ books }) {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url("${book.imageLinks.thumbnail}")`,
+              backgroundImage: `url("${typeof book.imageLinks !== "undefined"? book.imageLinks.thumbnail : ''}")`,
             }}
           ></div>
-          <BookShelfChanger book={book}/>
+          <BookShelfChanger book={book} refresh={refresh}/>
         </div>
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors[0]}</div>
+        <div className="book-authors">{typeof book.authors !== "undefined"? book.authors[0]: ''}</div>
+        <div className="book-shelf">{['currentlyReading','wantToRead','read'].includes(book.shelf)?book.shelf: '' }</div>
       </div>
     </li>
   ));

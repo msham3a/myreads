@@ -11,6 +11,7 @@ function App() {
   const [books, SetBooks] = useState([]);
 
   //useEffect to get all books
+  //get the books from API then set it in callback function
   useEffect(() => {
     const getBooks = async () => {
       const res = await BooksAPI.getAll();
@@ -19,7 +20,7 @@ function App() {
     };
 
     getBooks();
-  }, []);
+  }, [books]);
 
   const bookShelfTitles = [
     { id: 1, name: "Currently Reading" },
@@ -30,10 +31,10 @@ function App() {
   return (
     <Routes>
     <Route exact path="/" element={
-      <ListBooks bookShelfTitles={bookShelfTitles} books={books}/>
+      <ListBooks bookShelfTitles={bookShelfTitles} books={books} SetBooks={SetBooks}/>
     }/>
     <Route exact path="/search" element={
-      <SearchBooks/>
+      <SearchBooks />
     }/>
   </Routes>
   );

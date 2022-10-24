@@ -2,9 +2,7 @@ import BookShelf from "./BookShelf";
 import { Link } from "react-router-dom";
 
 function ListBooks({ bookShelfTitles , books }) {
-  //shelfs names
-
-
+  
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -23,10 +21,7 @@ function ListBooks({ bookShelfTitles , books }) {
       </div>
       <div className="open-search">
         <Link
-          to="/open_search"
-          onClick={() => {
-            //
-          }}
+          to="/search"
         >
           Add a book
         </Link>
